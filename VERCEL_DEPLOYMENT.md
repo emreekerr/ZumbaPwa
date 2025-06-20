@@ -8,8 +8,8 @@ Bu dosya, projenin Vercel'e nasıl deploy edileceğini açıklar.
 2. "New Project" butonuna tıklayın
 3. GitHub, GitLab veya Bitbucket hesabınızı bağlayın veya bu projeyi yükleyin
 4. Proje ayarlarında aşağıdaki ortam değişkenlerini ekleyin:
-   - `REACT_APP_SUPABASE_URL`: Supabase proje URL'niz
-   - `REACT_APP_SUPABASE_ANON_KEY`: Supabase anonim API anahtarınız
+   - `VITE_SUPABASE_URL`: Supabase proje URL'niz
+   - `VITE_SUPABASE_ANON_KEY`: Supabase anonim API anahtarınız
 5. "Deploy" butonuna tıklayın
 
 ## Önemli Notlar

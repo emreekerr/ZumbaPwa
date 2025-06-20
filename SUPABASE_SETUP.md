@@ -23,8 +23,8 @@ Bu dosya, Supabase projenizi nasıl kuracağınızı ve React uygulamasıyla nas
 ## 4. Ortam Değişkenlerini Ayarlama
 
 1. Bu projedeki `.env` dosyasını açın
-2. `REACT_APP_SUPABASE_URL` değerini Supabase proje URL'nizle değiştirin
-3. `REACT_APP_SUPABASE_ANON_KEY` değerini Supabase anonim API anahtarınızla değiştirin
+2. `VITE_SUPABASE_URL` değerini Supabase proje URL'nizle değiştirin
+3. `VITE_SUPABASE_ANON_KEY` değerini Supabase anonim API anahtarınızla değiştirin
 
 ## 5. Uygulamayı Çalıştırma
 
