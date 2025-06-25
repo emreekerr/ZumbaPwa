@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import Hero from '../components/Hero';
 
 const HomePage = () => {
   const { user } = useAuth();
@@ -10,20 +11,7 @@ const HomePage = () => {
     <div className="home-page">
       <Header />
       <main className="main-content">
-        <section className="hero-section">
-          <div className="hero-content">
-            <h1>Zumba ile Enerjinizi Yükseltin!</h1>
-            <p>
-              Eğlenceli müzikler eşliğinde dans ederek formda kalın. Zumba, fitness ve eğlenceyi bir araya getiren en iyi dans fitness programıdır.
-            </p>
-            {!user && (
-              <div className="cta-buttons">
-                <a href="/register" className="cta-button primary">Hemen Başla</a>
-                <a href="/login" className="cta-button secondary">Giriş Yap</a>
-              </div>
-            )}
-          </div>
-        </section>
+        <Hero />
 
         <section className="features-section">
           <h2>Neden Zumba?</h2>
