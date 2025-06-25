@@ -48,3 +48,8 @@ export default tseslint.config({
   },
 })
 ```
+
+## Canva Design
+
+This project displays a Canva design on the home page. Set the design ID in `.env` using the `VITE_CANVA_DESIGN_ID` variable. The current design is `DAGrYp5sik4/drLT576tRGSASzR2p8UDbQ`.
+
