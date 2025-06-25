@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import CanvaEmbed from '../components/CanvaEmbed';
 
 const HomePage = () => {
   const { user } = useAuth();
@@ -44,6 +45,10 @@ const HomePage = () => {
               <p>Gün boyu enerjik hissedin ve motivasyonunuzu artırın.</p>
             </div>
           </div>
+        </section>
+
+        <section className="canva-section">
+          <CanvaEmbed />
         </section>
 
         {user && (
