@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMRE EKER – ZUMBA</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+    header {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .card {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .card h2 {
+      color: #764ba2;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+    .form-group { margin-bottom:20px; }
+    .form-group label {
+      display:block; margin-bottom:8px; font-weight:600; color:#555;
+    }
+    .form-group input {
+      width:100%; padding:12px 16px; border:2px solid #e1e5e9;
+      border-radius:10px; font-size:16px; transition:all 0.3s ease;
+      background:rgba(255,255,255,0.8);
+    }
+    .form-group input:focus {
+      outline:none; border-color:#667eea;
+      box-shadow:0 0 0 3px rgba(102,126,234,0.1);
+    }
+    .btn {
+      width:100%; padding:15px; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+      color:white; border:none; border-radius:10px; font-size:16px;
+      font-weight:600; cursor:pointer; transition:all 0.3s ease;
+      text-transform:uppercase; letter-spacing:1px;
+    }
+    .btn:hover {
+      transform:translateY(-2px);
+      box-shadow:0 10px 25px rgba(102,126,234,0.3);
+    }
+    .btn:active { transform:translateY(0); }
+    .class-list { list-style:none; margin-top:20px; }
+    .class-item {
+      background:linear-gradient(135deg,#ff6b6b 0%,#ffa500 100%);
+      color:white; margin:10px 0; padding:15px 20px; border-radius:15px;
+      display:flex; justify-content:space-between; align-items:center;
+      box-shadow:0 5px 15px rgba(255,107,107,0.3); transition:all 0.3s ease;
+    }
+    .class-item:hover {
+      transform:translateY(-3px);
+      box-shadow:0 8px 25px rgba(255,107,107,0.4);
+    }
+    .class-info { display:flex; flex-direction:column; }
+    .class-name { font-weight:700; font-size:1.1rem; margin-bottom:5px; }
+    .class-time { opacity:0.9; font-size:0.9rem; }
+    .welcome-message {
+      background:linear-gradient(135deg,#4ecdc4 0%,#44a08d 100%);
+      color:white; padding:20px; border-radius:15px; text-align:center;
+      margin-bottom:25px; font-size:1.1rem; font-weight:600;
+    }
+    .add-class-form {
+      background:rgba(255,255,255,0.7); padding:20px; border-radius:15px;
+      margin-top:30px;
+    }
+    .add-class-form h4 {
+      color:#764ba2; margin-bottom:15px; font-size:1.3rem;
+    }
+    .delete-btn {
+      background:#ff4757; color:white; border:none; padding:8px 12px;
+      border-radius:8px; cursor:pointer; font-size:12px; transition:all 0.3s ease;
+    }
+    .delete-btn:hover {
+      background:#ff3742; transform:scale(1.05);
+    }
+    .empty-state {
+      text-align:center; padding:40px 20px; color:#888;
+    }
+    .empty-state .icon { font-size:4rem; margin-bottom:15px; opacity:0.3; }
+    .logout-btn {
+      background:#ff4757; width:auto; padding:10px 20px;
+      margin-top:20px; font-size:14px;
+    }
+    .logout-btn:hover { background:#ff3742; }
+    @media(max-width:480px){
+      .container { margin:20px auto; padding:0 15px; }
+      .card { padding:20px; }
+      header h1 { font-size:2rem; }
+      .form-row { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EMRE EKER – ZUMBA</h1>
+  </header>
+
+  <div class="container">
+    <div id="loginPage" class="card">
+      <h2>Giriş Yap</h2>
+      <div class="form-group">
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" placeholder='Kullanıcı adınızı girin (admin için "admin")'>
+      </div>
+      <div class="form-group">
+        <label for="password">Şifre:</label>
+        <input type="password" id="password" placeholder="Şifrenizi girin">
+      </div>
+      <button class="btn" id="loginBtn">Giriş Yap</button>
+    </div>
+
+    <div id="userPage" style="display:none;">
+      <div class="card">
+        <div class="welcome-message">
+          Hoş geldin, <span id="userNameDisplay"></span>! 🎉
+        </div>
+        <h3 style="color:#764ba2; margin-bottom:20px;">Mevcut Dersler:</h3>
+        <ul id="classListUser" class="class-list"></ul>
+        <button class="btn logout-btn" id="userLogoutBtn">Çıkış Yap</button>
+      </div>
+    </div>
+
+    <div id="adminPage" style="display:none;">
+      <div class="card">
+        <div class="welcome-message">
+          Hoş geldin, Admin! 👑
+        </div>
+        <h3 style="color:#764ba2; margin-bottom:20px;">Tüm Dersler:</h3>
+        <ul id="classListAdmin" class="class-list"></ul>
+
+        <div class="add-class-form">
+          <h4>Yeni Ders Ekle</h4>
+          <div class="form-group">
+            <input type="text" id="newClassName" placeholder="Ders adı">
+          </div>
+          <div class="form-group">
+            <input type="datetime-local" id="newClassTime">
+          </div>
+          <button class="btn" id="addClassBtn">Ders Ekle</button>
+        </div>
+        <button class="btn logout-btn" id="adminLogoutBtn">Çıkış Yap</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let classes = [];
+    function loadClasses() {
+      try {
+        const stored = localStorage.getItem('zumba_classes');
+        if (stored) classes = JSON.parse(stored);
+        else {
+          classes = [
+            { id:1, name:'Başlangıç Zumba', time:'2025-06-27T18:00' },
+            { id:2, name:'İleri Seviye Zumba', time:'2025-06-28T19:30' },
+            { id:3, name:'Zumba Gold (55+)', time:'2025-06-29T16:00' }
+          ];
+          saveClasses();
+        }
+      } catch {
+        classes = [
+          { id:1, name:'Başlangıç Zumba', time:'2025-06-27T18:00' },
+          { id:2, name:'İleri Seviye Zumba', time:'2025-06-28T19:30' },
+          { id:3, name:'Zumba Gold (55+)', time:'2025-06-29T16:00' }
+        ];
+      }
+    }
+    function saveClasses() {
+      try { localStorage.setItem('zumba_classes', JSON.stringify(classes)); }
+      catch {}
+    }
+    function formatDateTime(s) {
+      const d=new Date(s);
+      return d.toLocaleDateString('tr-TR',{weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    }
+    function showLogin() {
+      document.getElementById('loginPage').style.display='block';
+      document.getElementById('userPage').style.display='none';
+      document.getElementById('adminPage').style.display='none';
+      document.getElementById('username').value='';
+      document.getElementById('password').value='';
+    }
+    document.getElementById('loginBtn').addEventListener('click',()=>{
+      const u=document.getElementById('username').value.trim();
+      const p=document.getElementById('password').value;
+      if(!u){ alert('Lütfen kullanıcı adını girin'); return; }
+      if(!p){ alert('Lütfen şifrenizi girin'); return; }
+      const isAdmin = u.toLowerCase()==='admin';
+      if(!isAdmin) document.getElementById('userNameDisplay').textContent=u;
+      document.getElementById('loginPage').style.display='none';
+      document.getElementById(isAdmin?'adminPage':'userPage').style.display='block';
+      isAdmin?renderClassListAdmin():renderClassListUser();
+    });
+    document.getElementById('password').addEventListener('keypress',e=>{ if(e.key==='Enter') document.getElementById('loginBtn').click(); });
+    function renderClassListUser() {
+      const el=document.getElementById('classListUser'); el.innerHTML='';
+      if(classes.length===0) el.innerHTML='<div class="empty-state"><div class="icon">📅</div><p>Henüz ders bulunmuyor</p></div>';
+      else { [...classes].sort((a,b)=>new Date(a.time)-new Date(b.time)).forEach(c=>{ const li=document.createElement('li'); li.className='class-item'; li.innerHTML=`<div class="class-info"><div class="class-name">${c.name}</div><div class="class-time">${formatDateTime(c.time)}</div></div>`; el.appendChild(li); }); }
+    }
+    function renderClassListAdmin() {
+      const el=document.getElementById('classListAdmin'); el.innerHTML='';
+      if(classes.length===0) el.innerHTML='<div class="empty-state"><div class="icon">📅</div><p>Henüz ders eklenmemiş</p></div>';
+      else { [...classes].sort((a,b)=>new Date(a.time)-new Date(b.time)).forEach(c=>{ const li=document.createElement('li'); li.className='class-item'; li.innerHTML=`<div class="class-info"><div class="class-name">${c.name}</div><div class="class-time">${formatDateTime(c.time)}</div></div><button class="delete-btn" onclick="deleteClass(${c.id})">Sil</button>`; el.appendChild(li); }); }
+    }
+    function deleteClass(id){
+      if(confirm('Bu dersi silmek istediğinizden emin misiniz?')) {
+        classes=classes.filter(c=>c.id!==id);
+        saveClasses(); renderClassListAdmin();
+      }
+    }
+    document.getElementById('addClassBtn').addEventListener('click',()=>{
+      const n=document.getElementById('newClassName').value.trim();
+      const t=document.getElementById('newClassTime').value;
+      if(!n||!t){ alert('Lütfen ders adı ve zamanını girin'); return; }
+      if(new Date(t)<new Date()){ alert('Geçmiş bir tarih seçemezsiniz'); return; }
+      classes.push({ id:Date.now(), name:n, time:t });
+      saveClasses();
+      document.getElementById('newClassName').value=''; document.getElementById('newClassTime').value='';
+      renderClassListAdmin(); alert('Ders başarıyla eklendi!');
+    });
+    document.getElementById('userLogoutBtn').addEventListener('click', showLogin);
+    document.getElementById('adminLogoutBtn').addEventListener('click', showLogin);
+    loadClasses();
+    if('serviceWorker' in navigator){
+      const sw=`self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open('zumba-pwa-v1').then(c=>c.addAll(['/'])))});self.addEventListener('activate',e=>{clients.claim()});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))});`;
+      navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'})),{scope:'./'}).catch(console.error);
+    }
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt',e=>{e.preventDefault(); deferredPrompt=e;});
+  </script>
+</body>
+</html>
