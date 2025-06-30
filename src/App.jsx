@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import HomePage from './pages/HomePage';
+import Dashboard from './pages/Dashboard';
 import AdminPanel from './pages/admin/AdminPanel';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { registerServiceWorker, requestNotificationPermission, subscribeToPushNotifications } from './services/notificationService';
@@ -48,6 +49,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/admin" element={<AdminPanel />} />
           </Route>
