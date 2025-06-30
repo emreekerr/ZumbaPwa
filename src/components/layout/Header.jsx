@@ -25,6 +25,9 @@ const Header = () => {
                 <li>
                   <Link to="/profile">Profilim</Link>
                 </li>
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
                 {/* Admin kontrolü burada yapılabilir */}
                 <li>
                   <Link to="/admin">Admin Panel</Link>
